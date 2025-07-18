@@ -1,0 +1,131 @@
+EFDO_config_20250606_1GPUs:
+  name: EFDO_config_20250606_1GPUs
+  TRAIN_PATH: ../data/TrainDataSet.mat
+  VAL_PATH: ../data/ValDataSet.mat
+  TEST_PATH: ../data/TestDataSet.mat
+  save_mode: state_dict # saving as .pt file (all model); or state_dict for .pkl file(only parameters of model)
+  patience: 10 # if there is {patience} epoch that val_error is larger, early stop,
+  print_model_flag: True # print model information or not
+  n_out: 4 # rhoxy, phsxy, rhoyx, phsyx
+  s_train: [64,64,32,42] # resolution in (x,y) direction
+  r_train: [1,1,2,1] # Interval sampling
+  s_val: [64,64,32,42] # resolution in (x,y) direction
+  r_val: [1,1,2,1] # Interval sampling
+  s_test: [64,64,32,42] # resolution in (x,y) direction
+  r_test: [1,1,2,1] # Interval sampling
+  layer_sizes: [128,64,42] # the last layer is the number of receivers
+  layer_fno: 3 # the number of fno layers
+  layer_ufno: 3 # the number of ufno layers
+  modes: 18  # cutoff modes
+  width: 36  # lift layer in FNO and UFNO
+  act_fno : gelu # activation of ufno layer
+  init_func: xavier_uniform
+  ntrain: 30000 # samples of training
+  nval: 3000 # samples of validation
+  ntest: 3000   # samples of test
+  batch_size: 50
+  learning_rate: 0.001
+  epochs: 500
+  thre_epoch: 500 # condiser early stop after {thre_epoch} epochs
+  save_step: 100 # save model each steps
+  step_size: 50 # step size in scheduler 
+  gamma: 0.5 # the update rate of learning rate
+
+EFDO_config_20250606_2GPUs:
+  name: EFDO_config_20250606_2GPUs
+  TRAIN_PATH: ../data/TrainDataSet.mat
+  VAL_PATH: ../data/ValDataSet.mat
+  TEST_PATH: ../data/TestDataSet.mat
+  save_mode: state_dict # saving as .pt file (all model); or state_dict for .pkl file(only parameters of model)
+  patience: 10 # if there is {patience} epoch that val_error is larger, early stop,
+  print_model_flag: True # print model information or not
+  n_out: 4 # rhoxy, phsxy, rhoyx, phsyx
+  s_train: [64,64,32,42] # resolution in (x,y) direction
+  r_train: [1,1,2,1] # Interval sampling
+  s_val: [64,64,32,42] # resolution in (x,y) direction
+  r_val: [1,1,2,1] # Interval sampling
+  s_test: [64,64,32,42] # resolution in (x,y) direction
+  r_test: [1,1,2,1] # Interval sampling
+  layer_sizes: [128,64,42] # the last layer is the number of receivers
+  layer_fno: 3 # the number of fno layers
+  layer_ufno: 3 # the number of ufno layers
+  modes: 18  # cutoff modes
+  width: 36  # lift layer in FNO and UFNO
+  act_fno : gelu # activation of ufno layer
+  init_func: xavier_uniform
+  ntrain: 30000 # samples of training
+  nval: 3000 # samples of validation
+  ntest: 3000   # samples of test
+  batch_size: 50
+  learning_rate: 0.001
+  epochs: 500
+  thre_epoch: 500 # condiser early stop after {thre_epoch} epochs
+  save_step: 100 # save model each steps
+  step_size: 50 # step size in scheduler 
+  gamma: 0.5 # the update rate of learning rate
+
+EFDO_config_20250606_4GPUs:
+  name: EFDO_config_20250606_4GPUs
+  TRAIN_PATH: ../data/TrainDataSet.mat
+  VAL_PATH: ../data/ValDataSet.mat
+  TEST_PATH: ../data/TestDataSet.mat
+  save_mode: state_dict # saving as .pt file (all model); or state_dict for .pkl file(only parameters of model)
+  patience: 10 # if there is {patience} epoch that val_error is larger, early stop,
+  print_model_flag: True # print model information or not
+  n_out: 4 # rhoxy, phsxy, rhoyx, phsyx
+  s_train: [64,64,32,42] # resolution in (x,y) direction
+  r_train: [1,1,2,1] # Interval sampling
+  s_val: [64,64,32,42] # resolution in (x,y) direction
+  r_val: [1,1,2,1] # Interval sampling
+  s_test: [64,64,32,42] # resolution in (x,y) direction
+  r_test: [1,1,2,1] # Interval sampling
+  layer_sizes: [128,64,42] # the last layer is the number of receivers
+  layer_fno: 3 # the number of fno layers
+  layer_ufno: 3 # the number of ufno layers
+  modes: 18  # cutoff modes
+  width: 36  # lift layer in FNO and UFNO
+  act_fno : gelu # activation of ufno layer
+  init_func: xavier_uniform
+  ntrain: 30000 # samples of training
+  nval: 3000 # samples of validation
+  ntest: 3000   # samples of test
+  batch_size: 50
+  learning_rate: 0.001
+  epochs: 500
+  thre_epoch: 500 # condiser early stop after {thre_epoch} epochs
+  save_step: 100 # save model each steps
+  step_size: 50 # step size in scheduler 
+  gamma: 0.5 # the update rate of learning rate
+
+EFDO_config_20250606_8GPUs:
+  name: EFDO_config_20250606_8GPUs
+  TRAIN_PATH: ../data/TrainDataSet.mat
+  VAL_PATH: ../data/ValDataSet.mat
+  TEST_PATH: ../data/TestDataSet.mat
+  save_mode: state_dict # saving as .pt file (all model); or state_dict for .pkl file(only parameters of model)
+  patience: 10 # if there is {patience} epoch that val_error is larger, early stop,
+  print_model_flag: True # print model information or not
+  n_out: 4 # rhoxy, phsxy, rhoyx, phsyx
+  s_train: [64,64,32,42] # resolution in (x,y) direction
+  r_train: [1,1,2,1] # Interval sampling
+  s_val: [64,64,32,42] # resolution in (x,y) direction
+  r_val: [1,1,2,1] # Interval sampling
+  s_test: [64,64,32,42] # resolution in (x,y) direction
+  r_test: [1,1,2,1] # Interval sampling
+  layer_sizes: [128,64,42] # the last layer is the number of receivers
+  layer_fno: 3 # the number of fno layers
+  layer_ufno: 3 # the number of ufno layers
+  modes: 18  # cutoff modes
+  width: 36  # lift layer in FNO and UFNO
+  act_fno : gelu # activation of ufno layer
+  init_func: xavier_uniform
+  ntrain: 30000 # samples of training
+  nval: 3000 # samples of validation
+  ntest: 3000   # samples of test
+  batch_size: 50
+  learning_rate: 0.001
+  epochs: 500
+  thre_epoch: 500 # condiser early stop after {thre_epoch} epochs
+  save_step: 100 # save model each steps
+  step_size: 50 # step size in scheduler 
+  gamma: 0.5 # the update rate of learning rate
