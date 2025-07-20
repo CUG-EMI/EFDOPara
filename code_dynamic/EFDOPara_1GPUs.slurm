@@ -1,5 +1,5 @@
 #!/bin/bash  
-#SBATCH -J EFDO_M1GPU  
+#SBATCH -J opt_1GPUs
 #SBATCH --account=luosheng_w  
 #SBATCH --cluster=priv  
 #SBATCH --partition=priv_a100x4  
@@ -17,23 +17,39 @@ echo "Number of nodes:= " $SLURM_JOB_NUM_NODES
 echo "Ntasks per node:= "  $SLURM_NTASKS_PER_NODE  
 echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX "  
 
-# module load singularity  
-# module load nvidia/cuda/12.2 
-# module load openmpi/5.0_cuda12.2_gcc11.2 
-# 激活Conda环境  
+# load necessary modules
+module load nvidia/cuda/12.2
+module load openmpi/5.0_cuda12.2_gcc11.2  
+
+
+# activate conda environment  
 source /project/luosheng_w/mambaforge/etc/profile.d/conda.sh  
 conda activate torch2 
 
-# 设置完整路径  
-SCRIPT_PATH="/project/luosheng_w/Test/EFDOPara-main/code_prepare/EFDO_main_parallel_MPI.py"  
+# set the script path 
+SCRIPT_PATH="/home/luosheng_w/project/Test/EFDOPara-main/code_opt/EFDO_main_parallel.py"  
 chmod +x "$SCRIPT_PATH"
 
 echo "Run started at:- "  
 date  
 
-# # 修改2: 使用torchrun替代torch.distributed.launch
-mpiexec -np 1 python "$SCRIPT_PATH" --item EFDO_config_20250505_MPI_1GPU \
-    > EFDO_MPI_1GPU_202505014.txt
+# use a random port for distributed training
+RANDOM_PORT=$((30000 + RANDOM % 10000))
+echo "Using port: $RANDOM_PORT for distributed training"
+
+# set environment variables for distributed training
+export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
+export MASTER_PORT=$RANDOM_PORT
+export OMP_NUM_THREADS=8
+
+# use torch.distributed.run to start training
+cd /home/luosheng_w/project/Test/EFDOPara-main/code_opt
+
+python -m torch.distributed.run \
+    --nproc_per_node=1 \
+    --master_port=$RANDOM_PORT \
+    "$SCRIPT_PATH" --item EFDO_config_20250606_1GPUs \
+    > EFDO_config_20250617_1GPUs_opt.txt
 
 echo ""  
 echo "################################################################"  

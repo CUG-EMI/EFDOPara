@@ -27,59 +27,6 @@ def initialize_environment():
     
     return comm, rank, size
 
-# def initialize_environment():
-#     import random
-#     import os
-    
-#     comm = MPI.COMM_WORLD
-#     rank = comm.Get_rank()
-#     size = comm.Get_size()
-    
-#     # 如果没有设置MASTER_PORT环境变量，随机生成一个
-#     if 'MASTER_PORT' not in os.environ:
-#         if rank == 0:
-#             port = random.randint(10000, 65000)
-#             os.environ['MASTER_PORT'] = str(port)
-#             print(f"Using random port: {port}")
-#         else:
-#             # 非主进程等待主进程设置端口
-#             port = None
-            
-#         # 广播端口号给所有进程
-#         port = comm.bcast(port, root=0)
-#         if rank != 0:
-#             os.environ['MASTER_PORT'] = str(port)
-    
-#     # 确保设置MASTER_ADDR
-#     if 'MASTER_ADDR' not in os.environ:
-#         os.environ['MASTER_ADDR'] = 'localhost'
-        
-#     # 打印当前使用的端口和地址
-#     if rank == 0:
-#         print(f"Using MASTER_ADDR: {os.environ.get('MASTER_ADDR')}")
-#         print(f"Using MASTER_PORT: {os.environ.get('MASTER_PORT')}")
-    
-#     # 尝试初始化进程组，如果失败则重试不同端口
-#     try:
-#         dist.init_process_group(backend='nccl', world_size=size, rank=rank)
-#     except RuntimeError as e:
-#         if "EADDRINUSE" in str(e) and rank == 0:
-#             print(f"Port {os.environ.get('MASTER_PORT')} already in use, trying another...")
-#             port = random.randint(10000, 65000)
-#             os.environ['MASTER_PORT'] = str(port)
-#             print(f"Trying new port: {port}")
-        
-#         # 广播新端口号
-#         port = comm.bcast(int(os.environ.get('MASTER_PORT', 29500)), root=0)
-#         if rank != 0:
-#             os.environ['MASTER_PORT'] = str(port)
-        
-#         # 同步所有进程后再次尝试初始化
-#         comm.Barrier()
-#         dist.init_process_group(backend='nccl', world_size=size, rank=rank)
-    
-#     return comm, rank, size
-
 def cleanup():
     dist.destroy_process_group()
 
