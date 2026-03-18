@@ -88,15 +88,17 @@ singularity shell --nv horovodv2.sif
 
 Your project directory will be automatically mounted inside the container, and you can start running experiments immediately!
 
-## 💾 Get the DataSet
+## 💾 Data & Resources
 
-Our pre-processed training and testing datasets are required to run the examples.
+To ensure full transparency and reproducibility, we provide the pre-processed datasets, pre-configured computing containers, and pre-trained model outputs used in this study.
 
-You can download the dataset from the link below. After downloading, please unzip the file and place the contents into the `data` directory within the project's root folder.
+| Resource | Description | Link |
+| :--- | :--- | :--- |
+| **📦 Training Datasets** | Pre-processed MT datasets (*.mat format) | [Download Here](https://drive.google.com/drive/folders/18Eh2vyu2TiYP3mx3d3ChvTtyYWCTfH1D?usp=drive_link) |
+| **🐳 Computing Containers** | Pre-configured environment (Docker/Singularity) | [Download Here](https://drive.google.com/drive/folders/1wLK9UdEGc2rrGqhMQVboDI-kfCCFGcua?usp=drive_link) |
+| **📊 Model Outputs** | Pre-trained models and test results | [Download Here](https://drive.google.com/drive/folders/1kA2wseGK-CxjzA6RYuUQ3GJZtaaaezQG?usp=drive_link) |
 
-- **Dataset Link**: [Download Dataset (*.mat)](https://drive.google.com/drive/folders/1wLK9UdEGc2rrGqhMQVboDI-kfCCFGcua)
-
-Based on the file structure you've provided, here is a "Usage" or "How to Run" section for your `README.md` file. This guide explains how to run the experiments, focusing on the Slurm scripts for easy reproduction of results.
+> **Note**: After downloading the dataset, please unzip and place the files into the `./data` directory within the project root.
 
 -----
 
