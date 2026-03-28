@@ -235,5 +235,16 @@ You can download the models from the link below. After downloading, please place
    year={2025},
    publisher={Society of Exploration Geophysicists}
  }
+
+@article{liu2026efficient,
+  title={Efficient multi-GPU distributed training strategies for neural operator networks: Application to magnetotelluric forward modeling},
+  author={Liu, Juntong and Liao, Weiyang and Peng, Ronghua and Liu, Hui and Cai, Hongzhu and Hu, Xiangyun},
+  journal={Computers \& Geosciences},
+  volume={182},
+  pages={106161},
+  year={2026},
+  publisher={Elsevier},
+  doi={10.1016/j.cageo.2026.106161}
+}
  ```
 
